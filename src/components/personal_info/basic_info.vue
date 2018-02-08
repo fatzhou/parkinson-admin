@@ -9,42 +9,74 @@
       <div class="item clear">
         <div class="icon f-l name-icon"></div>
         <div class="f-l input-desc">真实姓名</div>
-        <div class="f-r"><input type="text" placeholder="请填写10个以内的汉字"></div>
+        <div class="f-r input-con"><input type="text" placeholder="请填写10个以内的汉字"></div>
       </div>
       <div class="item clear">
         <div class="icon f-l gender-icon"></div>
         <div class="f-l input-desc">
           性别
         </div>
-        <div class="f-r sex">
-          <span></span>
-          <input type="radio" name="sex">男
-          <input type="radio" name="sex">女
+        <div class="f-r sex input-con">
+          <span class="sex-item">
+            <input type="radio" name="sex" class="input-radio" v-on:click="radioClass">
+            <span class="male radio-icon" v-bind:class="radioClassFn"></span>
+            男
+          </span>
+          <span class="sex-item">
+            <input type="radio" name="sex" class="input-radio" v-on:click="radioClass">
+            <span class="female radio-icon" v-bind:class="radioClassFn2"></span>
+            女
+          </span>
         </div>
       </div>
       <div class="item clear">
         <div class="icon f-l location-icon"></div>
         <div class="f-l input-desc">所在城市</div>
-        <div class="f-r"><span></span>请选择所在城市</div>
+        <div class="f-r input-con">
+          <select>
+            <option>请选择所在城市</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+        </div>
       </div>
       <div class="item clear">
         <div class="icon f-l title-icon"></div>
         <div class="f-l input-desc">职称</div>
-        <div class="f-r"><span></span>请选择职称</div>
+        <div class="f-r input-con">
+          <select>
+            <option>请选择职称</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+        </div>
       </div>
       <div class="item clear">
         <div class="icon f-l hospital-icon"></div>
         <div class="f-l input-desc">医院</div>
-        <div class="f-r"><span></span>请选择医院</div>
+        <div class="f-r input-con">
+          <select>
+            <option>请选择医院</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+        </div>
       </div>
       <div class="item clear">
         <div class="icon f-l department-icon"></div>
         <div class="f-l input-desc">科室</div>
-        <div class="f-r"><span></span>请选择科室</div>
+        <div class="f-r input-con">
+          <select>
+            <option>请选择科室</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="footer-btn">
-      <a href="javascript:;" class="next-btn" v-on:click="showFn()">下一步</a>
     </div>
   </div>
 </template>
@@ -53,15 +85,41 @@ import store from '@/store/index'
 export default {
   data() {
     return {
-      isShow: true
+      isShow: true,
+      toParentData: true,
+      isRadioActive: true,
+      radioClassData: {
+        "active": "",
+        "default": ""
+      }
     }
   },
   components: {
+  },
+  computed: {
+    radioClassFn: function() {
+      return {
+        "active": this.isRadioActive,
+        "default": !this.isRadioActive
+      }
+    },
+    radioClassFn2: function(){
+      return {
+        "active": !this.isRadioActive,
+        "default": this.isRadioActive
+      }
+    }
   },
 
   methods: {
     showFn() {
       this.isShow = false;
+    },
+    radioClass() {
+      this.isRadioActive = !this.isRadioActive
+    },
+    sendMsgToParent() {
+      this.$emit("listenToChildEvent", !this.toParentData)
     }
   }
 }
@@ -106,11 +164,52 @@ export default {
     }
     .content{
       background-color: #fff;
+      margin-bottom: 40px;
       .item{
         line-height: 187 / 3px;
         border-bottom: 1px solid #E5E6E9;
         &:last-child{
           border: none;
+        }
+        .input-con {
+          font-family: PingFangTC-Regular;
+          font-size: 48 / 3px;
+          color: #CDD4DF;
+          letter-spacing: 0;
+          select {
+
+          }
+        }
+        .sex{
+          .sex-item{
+            display: inline-block;
+            position: relative;
+            margin-right: 20px;
+            .input-radio{
+              position: absolute;
+              left: 1px;
+              top: 23px;
+              display: inline-block;
+              .setwh(22px, 22px);
+              opacity: 0;
+            }
+            .radio-icon{
+              display: inline-block;
+              vertical-align: sub;
+              background: #000;
+              .setwh(22px, 22px);
+              margin-right: 10px;
+              &.default {
+                .setbg("../../assets/img/personal_icon_Unselected.png");
+              }
+              &.active {
+                .setbg("../../assets/img/personal_icon_checked.png");
+              }
+            }
+            &:last-child{
+              margin-right: 0;
+            }
+          }
         }
         .icon{
           margin-right: 40 / 3px;
@@ -145,21 +244,6 @@ export default {
           font-size: 48 / 3px;
           color: #465162;
         }
-      }
-    }
-    .footer-btn{
-      margin-top: 40px;
-      .next-btn{
-        display: block;
-        margin: 0 auto;
-        background: #00B3D5;
-        border-radius: 16/3px;
-        width: 750 / 3px;
-        line-height: 40px;
-        text-align: center;
-        color: #fff;
-        // font-family: PingFangTC-Regular;
-        font-size: 48/3px;
       }
     }
   }

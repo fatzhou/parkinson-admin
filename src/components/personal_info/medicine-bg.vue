@@ -27,12 +27,6 @@
         <textarea  rows="" cols="" placeholder="学术研究成果，获奖介绍"></textarea>
       </div>
     </div>
-    <div class="item-btn">
-      <a href="javascript:;" class="a-btn">上一步</a>
-      <!-- <router-link class="a-btn">上一步</router-link> -->
-      <!-- <router-link class="a-btn">提交</router-link> -->
-      <a href="javascript:;" class="a-btn">提交</a>
-    </div>
   </div>
 </template>
 
@@ -50,6 +44,7 @@
     background-size: cover;
   }
   .medicine-bg{
+    margin-bottom: 144 / 3px;
     font-family: PingFangTC-Regular;
     font-size: 48/3px;
     color: #465162;
@@ -92,25 +87,6 @@
           font-size: 42/3px;
           color: #C3CBD8;
           height: (156 + 59) / 3px;
-        }
-      }
-    }
-    .item-btn{
-      margin: 0 auto;
-      margin-top: 144 / 3px;
-      width: (420 * 2 + 62)/3px;
-      display: flex;
-      .a-btn{
-        width: 420 / 3px;
-        margin-right: 63 / 3px;
-        background: #00B3D5;
-        border-radius: 16/3px;
-        color: #fff;
-        line-height: 40px;
-        text-align: center;
-        &:last-child{
-          flex: 1;
-          margin-right: 0;
         }
       }
     }

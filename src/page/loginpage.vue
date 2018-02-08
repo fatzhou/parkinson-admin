@@ -1,8 +1,8 @@
 <template>
   <div class="login-container">
-    <!-- <personal></personal> -->
-    <login v-if="isLogin"></login>
-    <register v-else></register>
+    <personal></personal>
+    <!-- <login v-if="isLogin"></login> -->
+    <!-- <register v-else></register> -->
   </div>
 </template>
 

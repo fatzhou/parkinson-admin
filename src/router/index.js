@@ -60,22 +60,22 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  if(to.meta.auth) {
-    if(store.state.isLogin) {
-      next()
-    }else {
-      next({
-        name: 'login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
-    }
-  }else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if(to.meta.auth) {
+//     if(store.state.isLogin) {
+//       next()
+//     }else {
+//       next({
+//         name: 'login',
+//         query: {
+//           redirect: to.fullPath
+//         }
+//       })
+//     }
+//   }else {
+//     next()
+//   }
+// })
 
 export default router
 
