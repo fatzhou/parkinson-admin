@@ -8,6 +8,7 @@ Vue.use(Vuex)
 const state = {
 	testData: 1,
   isLogin: false,
+  isShowBasicePage: true
 }
 
 export default new Vuex.Store({

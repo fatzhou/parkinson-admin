@@ -1,15 +1,14 @@
 <template>
   <div class="login-container">
-    <personal></personal>
-    <!-- <login v-if="isLogin"></login> -->
-    <!-- <register v-else></register> -->
+    <!-- <personal></personal> -->
+    <login v-if="isLogin"></login>
+    <register v-else></register>
   </div>
 </template>
 
 <script>
   import login from "../components/login/login"
   import register from "../components/login/register"
-  import personalInfo from "../components/personal_info/basic_info"
   import personal from "../components/personal_info/personal"
   export default {
     data() {
@@ -20,7 +19,6 @@
     components: {
       login,
       register,
-      personalInfo,
       personal
     }
   }

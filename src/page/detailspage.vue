@@ -11,7 +11,7 @@ import participate from "../components/details/participate-detail"
 export default {
   data () {
     return {
-      identity:1
+      identity:0
     }
   },
   created () {
