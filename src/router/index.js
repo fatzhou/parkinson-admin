@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store/index'
 import HelloWorld from '@/page/HelloWorld'
-import login from '@/components/login/login'
+import login from "@/page/loginpage"
 import home from '@/page/homepage'
 import add from '@/page/add'
 import initiate from '@/page/initiate'

@@ -24,13 +24,7 @@
 
 <script>
 export default {
-  name: 'App',
-  data () {
-    return {
-      isActive: false,
-    }
-  },
-
+  name: 'App'
 }
 </script>
 

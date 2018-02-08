@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 const state = {
 	testData: 1,
-  isLogin: false
+  isLogin: false,
 }
 
 export default new Vuex.Store({

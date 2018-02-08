@@ -1,0 +1,80 @@
+@charset "utf-8";
+@PingFangSCRegular: "PingFangSC-Regular";
+@PingFangSCLight: "PingFangSC-Light";
+
+.setwh(@width, @height){
+  width: @width;
+  height: @height;
+}
+.border-raduis(@size){
+  border-radius: @size;
+}
+.set-btn(@width, @height, @bgcolor){
+  .setwh(@width, @height);
+  text-align: center;
+  line-height: @height;
+  background-color: @bgcolor;
+}
+.set-box-whb(@width, @height, @bgcolor){
+  .setwh(@width, @height);
+  background-color: @bgcolor;
+}
+.set-font(@size, @family){
+  font-size: @size;
+  font-family: @family;
+}
+.border-radius(@radius){
+  border-radius: @radius;
+}
+.set-dir(@flag) when (@flag = "top") {
+  top: 0;
+}
+.set-dir(@flag) when (@flag = "bottom") {
+  bottom: 0;
+}
+
+.set-holdplace-color(@color) {
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    @color;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    @color;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    @color;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    @color;
+  }
+}
+
+.border-1px(@color, @flag) {
+  position: relative;
+  &:after{
+    display: block;
+    position: absolute;
+    left: 0;
+    .set-dir(@flag);
+    width: 100%;
+    border-top: 1px solid @color;
+    content: '';
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5){
+  .border-1px() {
+    &:after{
+      -webkit-transform: scaleY(0.7);
+      transform: scaleY(0.7);
+    }
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2){
+  .border-1px() {
+    &:after{
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+}

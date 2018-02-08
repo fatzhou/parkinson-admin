@@ -4,5 +4,8 @@ export default {
 	},
   saveLogin(state) {
     state.isLogin = true
+  },
+  savePersonal(state){
+    state.isShowBasicePage = true;
   }
 }
