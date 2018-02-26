@@ -1,12 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store/index'
-import HelloWorld from '@/page/HelloWorld'
-import login from "@/page/loginpage"
-import home from '@/page/homepage'
-import add from '@/page/add'
-import initiate from '@/page/initiate'
-import detailspage from '@/page/detailspage'
+
+import login from "@/page/login/login"
+import register from "@/page/login/register"
+import participate from '@/page/list/participate'
+import organize from '@/page/list/organize'
+import create from '@/page/create/create'
+import detailo from '@/page/detail/organizer'
+import detailp from '@/page/detail/participate'
+import edit from '@/page/edit/edit'
+
+console.log(login)
 
 Vue.use(Router)
 Vue.use(store)
@@ -14,8 +19,14 @@ Vue.use(store)
 const router = new Router({
   routes: [
     {
+      path: '*',
+      name: 'any',
+      redirect: '/login'
+    },    
+    {
       path: '/',
-      redirect: '/home'
+      name: 'root',
+      redirect: '/paticiapate'
     },
     {
       path: '/login',
@@ -24,58 +35,83 @@ const router = new Router({
       meta: {
         auth: false
       }
-    },
+    },    
     {
-      path: '/home',
-      name: 'home',
-      component: home,
+      path: '/register',
+      name: 'register',
+      component: register,
       meta: {
-        auth: true
+        auth: false
       }
     },
     {
-      path: '/add',
-      name: 'add',
-      component: add,
+      path: '/participate',
+      name: 'participate',
+      component: participate,
       meta: {
         auth: true
+      }
+    },      
+    {
+      path: '/organize',
+      name: 'organize',
+      component: organize,
+      meta: {
+        auth: true
+      }
+    },    
+    {
+      path: '/detailo/:id',
+      name: 'detailo',
+      component: detailo,
+      meta: {
+        auth: true
+      },
+    },    
+    {
+      path: '/detailp/:id',
+      name: 'detailp',
+      component: detailp,
+      meta: {
+        auth: false
       }
     },
     {
-      path: '/initiate',
-      name: 'initiate',
-      component: initiate,
+      path: '/create',
+      name: 'create',
+      component: create,
       meta: {
         auth: true
       }
-    },
+    },     
     {
-      path: '/detailspage',
-      name: 'detailspage',
-      component: detailspage,
+      path: '/edit',
+      name: 'edit',
+      component: edit,
       meta: {
         auth: true
       }
-    }
+    },    
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  if(to.meta.auth) {
-    if(store.state.isLogin) {
-      next()
-    }else {
-      next({
-        name: 'login',
-        query: {
-          redirect: to.fullPath
-        }
-      })
-    }
-  }else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if(to.meta.auth) {
+//     console.log(store.state.isLogin)
+//     if(store.state.isLogin) {
+//       next()
+//     } else {
+//       next({
+//         name: 'login',
+//         query: {
+//           redirect: to.fullPath
+//         }
+//       })
+//     }
+//   }else {
+//     next()
+//   }
+// })
 
 export default router
 

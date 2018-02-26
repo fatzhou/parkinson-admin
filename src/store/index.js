@@ -6,9 +6,13 @@ import actions from './action'
 Vue.use(Vuex)
 
 const state = {
-	testData: 1,
   isLogin: false,
-  isShowBasicePage: true
+  openId: '',
+  token: '',
+  accessToken: '',
+  unionId: '',
+  isShowBasicePage: true,
+  userInfo: {},
 }
 
 export default new Vuex.Store({
